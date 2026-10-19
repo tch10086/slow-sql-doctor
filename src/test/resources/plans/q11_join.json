@@ -1,0 +1,73 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "146826.15"
+    },
+    "nested_loop": [
+      {
+        "table": {
+          "table_name": "u",
+          "access_type": "ref",
+          "possible_keys": [
+            "PRIMARY",
+            "idx_city"
+          ],
+          "key": "idx_city",
+          "used_key_parts": [
+            "city"
+          ],
+          "key_length": "130",
+          "ref": [
+            "const"
+          ],
+          "rows_examined_per_scan": 17828,
+          "rows_produced_per_join": 17828,
+          "filtered": "100.00",
+          "using_index": true,
+          "cost_info": {
+            "read_cost": "289.96",
+            "eval_cost": "1782.80",
+            "prefix_cost": "2072.76",
+            "data_read_per_join": "4M"
+          },
+          "used_columns": [
+            "id",
+            "city"
+          ]
+        }
+      },
+      {
+        "table": {
+          "table_name": "o",
+          "access_type": "ref",
+          "possible_keys": [
+            "idx_user_id"
+          ],
+          "key": "idx_user_id",
+          "used_key_parts": [
+            "user_id"
+          ],
+          "key_length": "8",
+          "ref": [
+            "slow_sql_lab.u.id"
+          ],
+          "rows_examined_per_scan": 10,
+          "rows_produced_per_join": 184974,
+          "filtered": "100.00",
+          "cost_info": {
+            "read_cost": "126255.95",
+            "eval_cost": "18497.44",
+            "prefix_cost": "146826.15",
+            "data_read_per_join": "208M"
+          },
+          "used_columns": [
+            "id",
+            "user_id",
+            "amount"
+          ]
+        }
+      }
+    ]
+  }
+}

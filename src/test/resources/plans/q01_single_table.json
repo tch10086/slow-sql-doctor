@@ -1,0 +1,44 @@
+{
+  "query_block": {
+    "select_id": 1,
+    "cost_info": {
+      "query_cost": "31.30"
+    },
+    "ordering_operation": {
+      "using_filesort": true,
+      "table": {
+        "table_name": "t_order",
+        "access_type": "ref",
+        "possible_keys": [
+          "idx_user_id"
+        ],
+        "key": "idx_user_id",
+        "used_key_parts": [
+          "user_id"
+        ],
+        "key_length": "8",
+        "ref": [
+          "const"
+        ],
+        "rows_examined_per_scan": 40,
+        "rows_produced_per_join": 40,
+        "filtered": "100.00",
+        "cost_info": {
+          "read_cost": "27.30",
+          "eval_cost": "4.00",
+          "prefix_cost": "31.30",
+          "data_read_per_join": "46K"
+        },
+        "used_columns": [
+          "id",
+          "user_id",
+          "order_no",
+          "amount",
+          "status",
+          "remark",
+          "create_time"
+        ]
+      }
+    }
+  }
+}
