@@ -1,0 +1,15 @@
+target/
+out/
+.idea/
+*.iml
+*.log
+.DS_Store
+
+# 生成的报告只保留样例，其余不入库
+docs/reports/*.html
+docs/reports/*.md
+!docs/reports/.gitkeep
+
+# 本地配置（数据库密码等）
+config-local.properties
+.env
