@@ -16,7 +16,7 @@
 - 采集 `EXPLAIN FORMAT=JSON`，递归处理 `nested_loop` / `ordering_operation` / `grouping_operation`；
 - 10 条规则输出问题（带证据和建议）；
 - 索引建议：列序、覆盖索引、与 `information_schema.STATISTICS` 比对、低区分度提示；
-- 生成 Markdown + HTML 报告（`docs/reports/`）；
+- 生成 Markdown + HTML 报告（`docs/reports/`），示例见 [`sample-q01.html`](docs/reports/sample-q01.html)；
 - 慢日志批量聚合：归一化、指纹、按总耗时排序；
 - 31 个 JUnit 测试，JSON fixture 不依赖数据库。
 
