@@ -1,0 +1,6 @@
+qid,scenario,before_sql,after_sql,before_median_ms,before_handler,after_median_ms,after_handler,note
+"Q08","加 create_time 索引 + 排序","SELECT * FROM t_order ORDER BY create_time DESC LIMIT 10","SELECT * FROM t_order ORDER BY create_time DESC LIMIT 10","254","1000003","0","11","索引顺序直接返回，消除 filesort"
+"Q02","改写函数条件 + 范围索引","SELECT * FROM t_order WHERE DATE(create_time) = '2026-03-01'","SELECT * FROM t_order WHERE create_time >= '2026-03-01' AND create_time < '2026-03-02'","232","1000003","8","2726","函数移到常量侧，走 create_time 范围"
+"Q03","隐式转换改写 + 已有索引","SELECT * FROM t_order WHERE order_no = 202610180001","SELECT * FROM t_order WHERE order_no = 'ORD10000001'","395","1000003","0","2","字符串列必须用字符串比较"
+"Q01","联合索引 (user_id, create_time)","SELECT * FROM t_order WHERE user_id = 10086 ORDER BY create_time DESC LIMIT 20","SELECT * FROM t_order WHERE user_id = 10086 ORDER BY create_time DESC LIMIT 20","0","41","0","20","绝对耗时已很低，但 Handler 减半、filesort 消除"
+"Q14","加 status 索引消除临时表","SELECT status, COUNT(*) FROM t_order GROUP BY status","SELECT status, COUNT(*) FROM t_order GROUP BY status","206","2000010","98","1000002","仍有 100 万索引项扫描，收益有限"

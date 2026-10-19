@@ -49,7 +49,7 @@ public final class BaselineRunner {
                     "SELECT * FROM t_order WHERE user_id = 10086 ORDER BY create_time DESC LIMIT 20",
                     true, ""),
             new Query("Q02",
-                    "SELECT * FROM t_order WHERE DATE(create_time) = '2026-10-01'",
+                    "SELECT * FROM t_order WHERE DATE(create_time) = '2026-03-01'",
                     true, ""),
             new Query("Q03",
                     "SELECT * FROM t_order WHERE order_no = 202610180001",

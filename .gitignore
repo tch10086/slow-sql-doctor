@@ -4,6 +4,7 @@ out/
 *.iml
 *.log
 .DS_Store
+dependency-reduced-pom.xml
 
 # 生成的报告只保留样例，其余不入库
 docs/reports/*.html

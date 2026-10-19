@@ -20,6 +20,27 @@ public final class ExplainPlan {
         tables.add(table);
     }
 
+    /**
+     * EXPLAIN 里的 table_name 可能是别名（u / o），用 AST 的别名映射还原成真实表名。
+     */
+    public void remapTableNames(java.util.function.UnaryOperator<String> mapper) {
+        List<TableAccess> remapped = new ArrayList<>();
+        for (TableAccess table : tables) {
+            remapped.add(new TableAccess(
+                    mapper.apply(table.tableName()),
+                    table.accessType(),
+                    table.possibleKeys(),
+                    table.key(),
+                    table.rowsExamined(),
+                    table.rowsProduced(),
+                    table.filtered(),
+                    table.usedColumns(),
+                    table.attachedCondition()));
+        }
+        tables.clear();
+        tables.addAll(remapped);
+    }
+
     public List<TableAccess> getTables() {
         return Collections.unmodifiableList(tables);
     }

@@ -18,8 +18,8 @@ SELECT * FROM t_order WHERE user_id = 10086 ORDER BY create_time DESC LIMIT 20;
 
 -- Q02 WHERE 列被函数包裹 → 索引（即使有）失效
 --     预期：type=ALL, rows≈100万
---     建议：改成范围条件 create_time >= '2026-10-01' AND create_time < '2026-10-02'
-SELECT * FROM t_order WHERE DATE(create_time) = '2026-10-01';
+--     建议：改成范围条件 create_time >= '2026-03-01' AND create_time < '2026-10-02'
+SELECT * FROM t_order WHERE DATE(create_time) = '2026-03-01';
 
 -- Q03 字符串列被数字比较 → 隐式类型转换 → 索引失效
 --     预期：type=ALL，key=NULL（虽然 idx_order_no 存在）
