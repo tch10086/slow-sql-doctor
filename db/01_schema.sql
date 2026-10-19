@@ -1,7 +1,7 @@
 -- ============================================================
 -- 01_schema.sql  —  表结构与初始索引
 -- 命令： mysql -u sqlquery -p slow_sql_lab < db/01_schema.sql
--- 设计要点（面试会问）：
+-- 设计要点：
 --   t_order.user_id 有索引、create_time 无索引、status 低区分度
 --   t_order.order_no 有索引，用来演示"字符串列被数字比较 → 索引失效"
 --   t_user.username 有索引，用来演示 LIKE '%x' 失效
