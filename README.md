@@ -60,6 +60,12 @@ com.sqlquery
 └─ tools/      SeedData, BaselineRunner
 ```
 
+## 完成流程
+
+![完成流程](docs/build-process.png)
+
+交互版（可缩放、搜索、导出）：[docs/build-process.html](docs/build-process.html)
+
 ---
 
 ## 快速开始
