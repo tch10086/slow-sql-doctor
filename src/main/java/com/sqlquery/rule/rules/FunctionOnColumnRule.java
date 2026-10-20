@@ -9,9 +9,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R03：WHERE 里的列被函数包裹，索引无法用于定位。
- */
 public final class FunctionOnColumnRule implements Rule {
 
     @Override

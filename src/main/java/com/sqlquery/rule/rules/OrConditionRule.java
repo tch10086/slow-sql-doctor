@@ -9,9 +9,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R06：OR 两侧只有一侧有索引，整体可能退化为全表扫描。
- */
 public final class OrConditionRule implements Rule {
 
     @Override

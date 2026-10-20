@@ -10,9 +10,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R05：LIKE '%x' 前导通配符。
- */
 public final class LeadingWildcardRule implements Rule {
 
     @Override

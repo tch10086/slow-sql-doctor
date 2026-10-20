@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * 从 SQL AST 抽出来的、规则引擎和索引建议需要的特征。
- */
 public final class SqlFeatures {
 
     private final String normalizedSql;
@@ -44,9 +41,7 @@ public final class SqlFeatures {
         }
     }
 
-    /**
-     * 别名或真实表名 → 真实表名；找不到返回 null。
-     */
+    
     public String resolveTable(String name) {
         return name == null ? null : aliasToTable.get(name);
     }

@@ -5,6 +5,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.Random;
 
+// 造数用：80% 订单压到 2 万热用户上，制造倾斜；建索引前先插数据会快很多。
 public class SeedData {
     static final String URL = "jdbc:mysql://localhost:3306/slow_sql_lab"
             + "?rewriteBatchedStatements=true"

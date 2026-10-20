@@ -8,9 +8,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R08：文件排序 / 临时表。
- */
 public final class FilesortTemporaryRule implements Rule {
 
     @Override

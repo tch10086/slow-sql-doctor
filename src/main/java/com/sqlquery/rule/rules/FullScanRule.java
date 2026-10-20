@@ -9,9 +9,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R01：全表扫描。只报扫描行数超过阈值的，小表全扫是合理的。
- */
 public final class FullScanRule implements Rule {
 
     private static final long MIN_ROWS = 10_000;

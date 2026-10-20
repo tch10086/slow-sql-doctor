@@ -14,9 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * 用真实 EXPLAIN FORMAT=JSON 作为 fixture，不连数据库。
- */
 class ExplainParserTest {
 
     @Test

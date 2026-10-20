@@ -22,9 +22,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 诊断编排：AST → EXPLAIN → 元数据 → 规则 → 索引建议 → 可选实测。
- */
+// 把解析、采集、规则、建议串起来；measure=false 时只分析，不执行原 SQL。
 public final class DiagnosisService {
 
     private final SqlAnalyzer analyzer = new SqlAnalyzer();

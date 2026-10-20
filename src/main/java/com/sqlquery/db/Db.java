@@ -7,9 +7,6 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * HikariCP 连接池。整个进程一个实例，用 try-with-resources 关闭。
- */
 public final class Db implements AutoCloseable {
 
     private final HikariDataSource dataSource;

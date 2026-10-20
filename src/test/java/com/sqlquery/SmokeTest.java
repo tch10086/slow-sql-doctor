@@ -7,10 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
-/**
- * 环境冒烟测试：确认 JUnit 5 + JSqlParser 依赖都能正常工作。
- * 对应手册 §2.4。
- */
 class SmokeTest {
 
     @Test

@@ -19,16 +19,7 @@ import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * CLI 入口。
- *
- * 用法：
- *   java -jar slow-sql-doctor.jar                     # 诊断默认 Q01
- *   java -jar slow-sql-doctor.jar "SELECT ..."        # 诊断指定 SQL
- *   java -jar slow-sql-doctor.jar -v "SELECT ..."     # 额外打印 EXPLAIN JSON
- *   java -jar slow-sql-doctor.jar bench "SELECT ..."  # 只测耗时
- *   java -jar slow-sql-doctor.jar slowlog <file>      # 聚合慢日志
- */
+// 命令行入口：默认诊断 Q01；也可以传 SQL、bench 或 slowlog。
 public final class Main {
 
     private static final String DEFAULT_SQL =

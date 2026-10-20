@@ -9,11 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Locale;
 
-/**
- * 采集一条 SELECT 的执行计划。
- *
- * 只执行 EXPLAIN，不执行原 SQL；DML/DDL 一律拒绝。
- */
+// 只放行 SELECT。EXPLAIN 不会执行原 SQL，后面 SHOW WARNINGS 拿优化器改写后的语句。
 public final class ExplainCollector {
 
     public ExplainPlan collect(Connection conn, String sql) throws SQLException {
@@ -32,9 +28,7 @@ public final class ExplainCollector {
         return plan;
     }
 
-    /**
-     * 返回 EXPLAIN FORMAT=JSON 的原始字符串，方便报告/调试。
-     */
+    
     public String explainJson(Connection conn, String sql) throws SQLException {
         requireSelect(sql);
         try (Statement st = conn.createStatement();
@@ -57,9 +51,7 @@ public final class ExplainCollector {
         }
     }
 
-    /**
-     * EXPLAIN 之后 SHOW WARNINGS 里的 Note 1003 是优化器改写后的 SQL。
-     */
+    
     private static String readRewrittenSql(Connection conn) throws SQLException {
         String rewritten = null;
         try (Statement st = conn.createStatement();

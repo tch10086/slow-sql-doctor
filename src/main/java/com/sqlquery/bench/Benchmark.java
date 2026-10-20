@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * 简单的基准测量：预热 + N 次取中位数，同时记录 Handler_read 差值。
- */
+// 先预热两遍，再测三遍取中位数。第一次通常被磁盘 IO 拖慢，不能直接用。
 public final class Benchmark {
 
     private Benchmark() {

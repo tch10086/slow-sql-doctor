@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-/**
- * 按 SQL 指纹聚合慢日志：count / 总耗时 / 平均 / 最大 / 总扫描行数。
- */
 public final class SlowLogAggregator {
 
     public record Aggregate(
@@ -57,9 +54,7 @@ public final class SlowLogAggregator {
         return result;
     }
 
-    /**
-     * 字面量归一化：字符串 → ?，数字 → ?，压缩空白，IN 列表折叠。
-     */
+    
     public static String normalize(String sql) {
         String value = sql.replaceAll("(?s)/\\*.*?\\*/", " ");
         value = value.replaceAll("'(?:[^']|'')*'", "?");

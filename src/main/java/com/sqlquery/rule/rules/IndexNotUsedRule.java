@@ -9,9 +9,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R02：有可用索引但没选中。
- */
 public final class IndexNotUsedRule implements Rule {
 
     @Override

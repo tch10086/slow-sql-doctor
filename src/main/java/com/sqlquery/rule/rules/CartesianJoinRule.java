@@ -7,9 +7,6 @@ import com.sqlquery.rule.Severity;
 
 import java.util.List;
 
-/**
- * R10：隐式笛卡尔积（JOIN 没有 ON 条件）。
- */
 public final class CartesianJoinRule implements Rule {
 
     @Override

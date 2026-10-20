@@ -13,10 +13,6 @@ import com.sqlquery.rule.Severity;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * R04：字符串列和数字字面量比较，MySQL 会把列转成数字，索引失效。
- * 反方向（数字列 = 字符串）转的是常量，不算问题。
- */
 public final class ImplicitConversionRule implements Rule {
 
     @Override

@@ -15,21 +15,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * D2 基线采集器。
- *
- * 对 16 条典型慢 SQL 做：
- *   1) EXPLAIN：记录 type / key / rows / Extra
- *   2) 预热 2 次 + 正式 3 次：取中位耗时
- *   3) 每次记录 Handler_read_* 差值：近似"实际扫描行数"
- *   4) 输出 docs/baseline.csv
- *
- * 特殊处理：
- *   Q12 是笛卡尔积，只 EXPLAIN，绝不执行。
- *
- * 运行（项目根目录）：
- *   mvn -q -DskipTests compile exec:java -Dexec.mainClass=com.sqlquery.tools.BaselineRunner
- */
+// 批量跑 16 条 SQL 并写 baseline.csv；Q12 是笛卡尔积，只 EXPLAIN，不执行。
 public final class BaselineRunner {
 
     private static final String URL = "jdbc:mysql://localhost:3306/slow_sql_lab"
@@ -136,7 +122,7 @@ public final class BaselineRunner {
         System.out.println("written: " + CSV.toAbsolutePath());
     }
 
-    /** 只执行 EXPLAIN，不执行原 SQL；Q12 也安全。 */
+    
     private static Plan explain(Connection conn, String sql) throws SQLException {
         LinkedHashSet<String> types = new LinkedHashSet<>();
         LinkedHashSet<String> keys = new LinkedHashSet<>();
@@ -166,7 +152,7 @@ public final class BaselineRunner {
                 String.join("|", extras));
     }
 
-    /** 执行一次并消费全部结果，返回耗时与 Handler_read 差值。 */
+    
     private static Sample runOnce(Connection conn, String sql) throws SQLException {
         long before = handlerReads(conn);
         long start = System.nanoTime();

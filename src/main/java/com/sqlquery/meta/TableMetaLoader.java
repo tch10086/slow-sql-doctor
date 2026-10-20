@@ -10,9 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 从 information_schema 读取表、列、索引元数据。
- */
 public final class TableMetaLoader {
 
     private TableMetaLoader() {

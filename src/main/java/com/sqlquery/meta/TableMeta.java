@@ -8,9 +8,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-/**
- * 一张表的元数据 + 现有索引。
- */
 public final class TableMeta {
 
     private final String tableName;
@@ -47,9 +44,7 @@ public final class TableMeta {
         return indexes;
     }
 
-    /**
-     * 估算选择性：Cardinality / 行数。没有统计信息时返回 empty。
-     */
+    
     public Optional<Double> selectivity(String column) {
         Long cardinality = columnCardinality.get(column);
         if (cardinality == null || cardinality <= 0 || rowCount <= 0) {
@@ -65,9 +60,7 @@ public final class TableMeta {
         return indexes.stream().filter(i -> i.name().equalsIgnoreCase(name)).findFirst();
     }
 
-    /**
-     * 候选列是否已经是某个现有索引的前缀（被现有索引覆盖）。
-     */
+    
     public boolean hasIndexPrefix(List<String> candidate) {
         for (IndexMeta index : indexes) {
             if (index.columns().size() >= candidate.size()
@@ -78,23 +71,17 @@ public final class TableMeta {
         return false;
     }
 
-    /**
-     * 是否存在与候选完全相同的索引。
-     */
+    
     public boolean hasIndexExactly(List<String> candidate) {
         return indexes.stream().anyMatch(i -> i.columns().equals(candidate));
     }
 
-    /**
-     * 候选索引是否是某个现有索引的前缀（建了会冗余）。
-     */
+    
     public boolean isPrefixOfExisting(List<String> candidate) {
         return hasIndexPrefix(candidate);
     }
 
-    /**
-     * 某个索引是否覆盖 needed 列（索引列 + 主键列）。
-     */
+    
     public boolean covers(String indexName, Collection<String> needed) {
         IndexMeta index = indexByName(indexName).orElse(null);
         if (index == null) {
@@ -115,19 +102,14 @@ public final class TableMeta {
         return primary;
     }
 
-    /**
-     * 候选列 + 主键是否覆盖 selectColumns。
-     */
+    
     public boolean coversWith(List<String> candidate, Collection<String> selectColumns) {
         Set<String> available = new LinkedHashSet<>(candidate);
         available.addAll(primaryKeyColumns());
         return available.containsAll(selectColumns);
     }
 
-    /**
-     * 与候选相比已经冗余的现有索引（现有索引是候选的前缀）。
-     * 例如已有 (a)，候选 (a,b) → (a) 冗余。
-     */
+    
     public List<String> redundantPrefixIndexes(List<String> candidate) {
         List<String> result = new ArrayList<>();
         for (IndexMeta index : indexes) {

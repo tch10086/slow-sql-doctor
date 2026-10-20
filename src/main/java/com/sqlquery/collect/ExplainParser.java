@@ -9,13 +9,7 @@ import com.sqlquery.model.TableAccess;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 解析 MySQL 8 的 EXPLAIN FORMAT=JSON。
- *
- * 关键点：JSON 是嵌套的，JOIN 时 table 在 nested_loop 数组里，
- * 排序/分组时 table 在 ordering_operation / grouping_operation 里，
- * 所以必须递归遍历，不能按固定路径取。
- */
+// JSON 层级会随 JOIN、排序、分组变化，这里不按固定路径取，统一递归找 table 节点。
 public final class ExplainParser {
 
     private static final ObjectMapper MAPPER = new ObjectMapper();

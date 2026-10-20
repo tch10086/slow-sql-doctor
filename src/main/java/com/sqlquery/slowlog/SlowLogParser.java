@@ -9,12 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * 解析 MySQL 慢查询日志（FILE 格式）。
- *
- * 只处理单条 SQL 用分号结束的常见情况；字符串/注释里带分号会误判，
- * 这是已知局限，README 里会写。
- */
+// 按 # Time 分段，SQL 以分号结束。字符串里带分号会误判，先用着，后面再换 pt-query-digest。
 public final class SlowLogParser {
 
     private static final Pattern TIME = Pattern.compile("#\\s*Time:\\s*(\\S+)");

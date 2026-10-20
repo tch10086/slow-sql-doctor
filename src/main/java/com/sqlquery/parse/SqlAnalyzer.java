@@ -45,12 +45,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
-/**
- * 把 SQL 解析成 SqlFeatures。
- *
- * 只支持单条 PlainSelect；子查询/UNION 会抛 UnsupportedSqlException。
- * 这是当前版本的已知局限，README 里会写清楚。
- */
+// 只处理单条 SELECT。子查询、UNION 暂时不做，遇到就抛 UnsupportedSqlException。
 public final class SqlAnalyzer {
 
     public SqlFeatures analyze(String sql) {

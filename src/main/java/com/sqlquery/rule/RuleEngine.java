@@ -19,9 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 规则引擎：遍历规则、收集问题、按 (ruleId, columns) 去重、按严重度排序。
- */
+// 单条规则出异常只记日志，不能让整次诊断挂掉；收集完再去重、按严重度排。
 public final class RuleEngine {
 
     private static final Logger log = LoggerFactory.getLogger(RuleEngine.class);

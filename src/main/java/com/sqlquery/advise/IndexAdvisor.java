@@ -12,14 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * 索引建议：
- *   等值列（含 JOIN 关联列，按区分度降序） → 范围列（最多 1 个） → 排序列/分组列
- *   能覆盖 SELECT 列时追加为覆盖索引
- *   与现有索引比对，跳过已被前缀覆盖的候选
- *
- * 只生成 DDL，不执行。
- */
+// 列序：JOIN/等值 → 范围（最多一个）→ 排序/分组；能覆盖 SELECT 列就补成覆盖索引。
 public final class IndexAdvisor {
 
     private static final int MAX_COLUMNS = 5;

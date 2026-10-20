@@ -2,9 +2,6 @@ package com.sqlquery.rule;
 
 import java.util.List;
 
-/**
- * 一条规则发现的问题。
- */
 public record Issue(
         String ruleId,
         String title,

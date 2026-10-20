@@ -13,9 +13,7 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-/**
- * 生成 Markdown / HTML 诊断报告。
- */
+// 同时生成 Markdown 和 HTML；HTML 主要是方便直接打开、截图。
 public final class ReportGenerator {
 
     private ReportGenerator() {
@@ -190,9 +188,7 @@ public final class ReportGenerator {
         return sb.toString();
     }
 
-    /**
-     * 写 Markdown + HTML 两个文件，返回 Markdown 路径。
-     */
+    
     public static Path write(AnalysisResult result, Path directory, String prefix) throws IOException {
         Files.createDirectories(directory);
         String stamp = DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss").format(LocalDateTime.now());

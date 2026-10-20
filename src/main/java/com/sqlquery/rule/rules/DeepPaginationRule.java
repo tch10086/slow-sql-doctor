@@ -7,9 +7,6 @@ import com.sqlquery.rule.Severity;
 
 import java.util.List;
 
-/**
- * R09：深分页。LIMIT offset 很大时，前面 offset 行会被扫描后丢弃。
- */
 public final class DeepPaginationRule implements Rule {
 
     private static final long MIN_OFFSET = 10_000;

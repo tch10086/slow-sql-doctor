@@ -14,9 +14,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * R07：回表。二级索引拿到主键后，还要回聚簇索引取 SELECT 的列。
- */
 public final class BackToTableRule implements Rule {
 
     @Override
