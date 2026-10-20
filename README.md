@@ -64,7 +64,7 @@ com.sqlquery
 
 ![完成流程](docs/build-process.png)
 
-交互版（可缩放、搜索、导出）：[docs/build-process.html](docs/build-process.html)
+交互版（下载到本地，用浏览器打开）：[docs/build-process.html](docs/build-process.html)
 
 ---
 
